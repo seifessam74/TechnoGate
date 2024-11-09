@@ -1,0 +1,305 @@
+/* General styling */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-image 0.5s ease-in-out;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.hero-section:active {
+  cursor: grabbing;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(17, 62, 121, 0.7); */
+  /* background-color: rgba(37, 99, 235, 0.7); */
+  background-color: rgb(25, 109, 171, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+  padding: 0 20px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hero-heading {
+  font-size: 60px;
+  font-weight: 1000;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subheading {
+  font-size: 30px;
+  font-weight: 500;
+  color: #dfd9ff;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Side Navigation Styles */
+.side-navigation {
+  position: absolute;
+  left: 110px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+}
+
+.nav-circle {
+  position: relative;
+  width: 41px;
+  height: 41px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  outline: none;
+}
+
+.nav-circle.active {
+  opacity: 1;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: stroke-dasharray 0.8s ease;
+}
+
+.circle-origin {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.nav-circle.active .circle-origin {
+  stroke-dasharray: 126.92;
+  stroke-dashoffset: 0;
+  animation: fill-border 1.8s forwards;
+}
+
+@keyframes fill-border {
+  0% {
+    stroke-dashoffset: 126.92;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.nav-circle:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.nav-circle:active {
+  transform: scale(0.95);
+}
+
+.nav-circle span {
+  font-size: 12px;
+  color: #fff;
+}
+
+.nav-circle:not(.active) {
+  opacity: 0.3;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .hero-heading {
+    font-size: 60px;
+  }
+
+  .hero-subheading {
+    font-size: 24px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .side-navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    padding: 30px 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  }
+
+  .nav-circle {
+    width: 41px; /* Match SVG width */
+    height: 41px; /* Match SVG height */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-circle svg {
+    width: 100%; /* Make the SVG take full space */
+    height: 100%; /* Make the SVG take full space */
+  }
+
+  .nav-circle .circle-origin {
+    r: 20; /* Full radius */
+    cx: 20.5; /* Centered */
+    cy: 20.5; /* Centered */
+    stroke-width: 1; /* Adjust stroke width as needed */
+    fill: transparent; /* Transparent fill */
+    stroke: #fff; /* Stroke color */
+    stroke-dasharray: 125.66; /* Full circle: 2 * π * 20 */
+    stroke-dashoffset: 0; /* Full visibility */
+    transition: stroke-dashoffset 0.8s ease-in-out; /* Smooth transition */
+  }
+
+  .nav-circle.active .circle-origin {
+    animation: fill-border 1.8s forwards; /* time of fill  */
+  }
+
+  @keyframes fill-border {
+    0% {
+      stroke-dashoffset: 125.66; /* Start with full circle */
+    }
+    100% {
+      stroke-dashoffset: 0; /* Animate to filled */
+    }
+  }
+
+  .nav-circle span {
+    font-size: 12px;
+    z-index: 2;
+    color: white;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-navigation {
+    gap: 6px;
+    padding: 30px 0;
+  }
+
+  .nav-circle {
+    width: 41px; /* Match SVG width for consistency */
+    height: 41px; /* Match SVG height for consistency */
+  }
+
+  .nav-circle svg {
+    width: 100%; /* Full width and height */
+    height: 100%; /* Full width and height */
+  }
+
+  .nav-circle .circle-origin {
+    r: 20; /* Full radius */
+    cx: 20.5; /* Centered */
+    cy: 20.5; /* Centered */
+    stroke-width: 1; /* Adjust stroke width as needed */
+    fill: transparent; /* Transparent fill */
+    stroke: #fff; /* Stroke color */
+    stroke-dasharray: 125.66; /* Full circle: 2 * π * 20 */
+    stroke-dashoffset: 0; /* Full visibility */
+  }
+
+  .nav-circle span {
+    font-size: 10px; /* Adjust font size */
+  }
+
+  .nav-circle.active .circle-origin {
+    animation: fill-border 1.8s forwards;
+  }
+
+  @keyframes fill-border {
+    0% {
+      stroke-dashoffset: 125.66; /* Start with full circle */
+    }
+    100% {
+      stroke-dashoffset: 0; /* Animate to filled */
+    }
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .hero-section {
+    cursor: default;
+  }
+
+  .nav-circle:hover {
+    transform: none;
+  }
+
+  .nav-circle:active {
+    transform: scale(0.95);
+  }
+}
+
+/* General optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: transparent;
+}
+
+::-moz-selection {
+  background: transparent;
+}
+
+.background-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* Behind content */
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire section */
+}
