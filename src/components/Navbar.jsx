@@ -43,7 +43,7 @@ const TopBar = () => {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <a
-                href="https://wa.me/01010036560"
+                href="https://wa.me/01090557558"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm hover:text-green-400 transition-colors group"
@@ -52,7 +52,7 @@ const TopBar = () => {
                   size={18}
                   className="text-green-400 group-hover:text-green-400"
                 />
-                01010036560
+                01090557558
               </a>
             </div>
 

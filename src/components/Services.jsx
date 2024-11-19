@@ -20,7 +20,7 @@ const ServiceCard = ({ index, title, icon }) => {
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
         className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out"
       >
-        <div className="bg-[#2563EB] rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
+        <div className="bg-blue-primary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
           <img src={icon} alt={title} className="w-16 h-16 object-contain" />
           <h3 className="text-gray-100 text-[20px] font-bold text-center">
             {title}
@@ -34,12 +34,11 @@ const ServiceCard = ({ index, title, icon }) => {
 const About = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <h2
-          className={`md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-right text-[#2563EB]`}
-        >
-          خدماتنا
-        </h2>
+      <motion.div variants={textVariant()} dir="rtl">
+        <div className="flex items-center space-x-4 ">
+          <div className="h-12 w-1 bg-blue-primary ml-5"></div>
+          <h2 className="text-4xl font-bold text-blue-primary">خدماتنا</h2>
+        </div>
       </motion.div>
 
       <div className="mt-20 flex flex-wrap gap-10">

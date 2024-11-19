@@ -7,9 +7,9 @@ import {
 import { Hero, Overlay } from "./Hero";
 import Navbar from "./Navbar";
 import About from "./About";
-import Tech from "./Tech";
-import Experience from "./Experience";
-import Works from "./Works";
+import Services from "./Services";
+import Applications from "./Applications";
+import Clients from "./Clients";
 import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -19,9 +19,9 @@ export {
   Overlay,
   Navbar,
   About,
-  Tech,
-  Experience,
-  Works,
+  Services,
+  Applications,
+  Clients,
   Feedbacks,
   Contact,
   EarthCanvas,

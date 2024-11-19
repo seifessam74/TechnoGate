@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react"; // Added useEffect
 import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.css";
 
@@ -7,74 +7,112 @@ const Overlay = () => {
     <motion.div
       className="absolute top-0 left-[1.3%] w-[150px] bg-[#0a2342] bg-opacity-60"
       initial={{
-        height: 0, // Start with 0 height
-        rotate: 17, // Start with 17 degrees rotation
-        scale: 1.5, // Start with 1.5 scale
+        height: 0,
+        rotate: 17,
+        scale: 1.5,
       }}
       animate={{
-        height: "100%", // Grow to full height
-        rotate: 17, // Maintain 17 degrees rotation
-        scale: 1.5, // Maintain 1.5 scale
+        height: "100%",
+        rotate: 17,
+        scale: 1.5,
       }}
       exit={{
-        opacity: 0, // Fade out to 0 opacity
+        opacity: 0,
         transition: {
-          duration: 0.5, // Fade out duration
-          ease: "easeOut", // Smooth fade out
+          duration: 0.5,
+          ease: "easeOut",
         },
       }}
       transition={{
-        duration: 1, // Duration of the animation
-        ease: "easeInOut", // Smooth easing
-        delay: 0.4, // Delay before starting
+        duration: 1,
+        ease: "easeInOut",
+        delay: 0.4,
       }}
     />
   );
 };
+
 const slides = [
   {
-    image: "/images/one.png",
+    image: `${import.meta.env.BASE_URL}images/one.png`,
     title: "نحو حلول برمجية متكاملة",
     subtitle: "تحقق أهدافك",
   },
   {
-    image: "/images/three.png",
+    image: `${import.meta.env.BASE_URL}images/three.png`,
     title: "استراتيجيات مبتكرة",
     subtitle: "لتحويل رؤيتك إلى واقع",
   },
   {
-    image: "/images/two.png",
+    image: `${import.meta.env.BASE_URL}images/two.png`,
     title: "إدارة سلسة و احترافية لأعمالك",
     subtitle: "مع حلول ERP المتقدمة من تكنوجيت",
   },
   {
-    image: "/images/four.png",
+    image: `${import.meta.env.BASE_URL}images/four.png`,
     title: "تكنولوجيا أوراكل",
     subtitle: "هي الأساس لمنتجات برمجية مستدامة وفعالة",
   },
   {
-    image: "/images/five.png",
+    image: `${import.meta.env.BASE_URL}images/five.png`,
     title: "التزامنا بالجودة",
     subtitle: "يضمن أداءً سلساً وموثوقية طويلة الأمد لمنتجاتنا",
   },
   {
-    image: "/images/six.png",
+    image: `${import.meta.env.BASE_URL}images/six.png`,
     title: "تكامل سلس و فعال",
     subtitle: "مع منظومة مصلحة الضرائب",
   },
 ];
 
 const Hero = () => {
-  <Overlay />;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true); // Added state for auto-play
   const startX = useRef(null);
   const currentX = useRef(null);
+  const autoPlayInterval = useRef(null); // Added ref for interval
+
+  // Auto-play functionality
+  useEffect(() => {
+    const startAutoPlay = () => {
+      if (isAutoPlaying) {
+        autoPlayInterval.current = setInterval(() => {
+          setCurrentSlide((prev) =>
+            prev === slides.length - 1 ? 0 : prev + 1
+          );
+        }, 5000); // Change slide every 5 seconds
+      }
+    };
+
+    const stopAutoPlay = () => {
+      if (autoPlayInterval.current) {
+        clearInterval(autoPlayInterval.current);
+      }
+    };
+
+    startAutoPlay();
+
+    // Cleanup on component unmount
+    return () => stopAutoPlay();
+  }, [isAutoPlaying]);
+
+  // Pause auto-play when user interacts with slider
+  const pauseAutoPlay = () => {
+    setIsAutoPlaying(false);
+  };
+
+  // Resume auto-play after user interaction
+  const resumeAutoPlay = () => {
+    setIsAutoPlaying(true);
+  };
 
   const handleNavClick = (event, index) => {
     event.preventDefault();
     event.stopPropagation();
     setCurrentSlide(index);
+    pauseAutoPlay(); // Pause when user manually navigates
+    setTimeout(resumeAutoPlay, 5000); // Resume after 5 seconds of inactivity
   };
 
   // Mouse events for desktop
@@ -82,6 +120,7 @@ const Hero = () => {
     setIsDragging(true);
     startX.current = e.clientX;
     currentX.current = e.clientX;
+    pauseAutoPlay(); // Pause when user starts dragging
   };
 
   const handleMouseMove = (e) => {
@@ -106,12 +145,14 @@ const Hero = () => {
     setIsDragging(false);
     startX.current = null;
     currentX.current = null;
+    setTimeout(resumeAutoPlay, 5000); // Resume after 5 seconds of inactivity
   };
 
   // Touch events for mobile
   const handleTouchStart = (e) => {
     startX.current = e.touches[0].clientX;
     currentX.current = e.touches[0].clientX;
+    pauseAutoPlay(); // Pause when user starts touching
   };
 
   const handleTouchMove = (e) => {
@@ -134,6 +175,7 @@ const Hero = () => {
 
     startX.current = null;
     currentX.current = null;
+    setTimeout(resumeAutoPlay, 5000); // Resume after 5 seconds of inactivity
   };
 
   const titleVariants = {
@@ -216,7 +258,6 @@ const Hero = () => {
             >
               <circle className="circle-origin" r="20" cx="20.5" cy="20.5" />
             </svg>
-
             <span>{index + 1}</span>
           </button>
         ))}

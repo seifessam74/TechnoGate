@@ -1,29 +1,14 @@
-import {
-  mobile,
-  backend,
-  creator,
-  web,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  redux,
-  tailwind,
-  nodejs,
-  mongodb,
-  git,
-  figma,
-  docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
-  jobit,
-  tripguide,
-  threejs,
-} from "../assets";
+// Import icons
+import webIcon from "../assets/web.png";
+import mobileIcon from "../assets/mobile.png";
+import backendIcon from "../assets/backend.png";
+import creatorIcon from "../assets/creator.png";
+
+// Import company icons
+import metaIcon from "../assets/company/meta.png";
+import starbucksIcon from "../assets/company/starbucks.png";
+import teslaIcon from "../assets/company/tesla.png";
+import shopifyIcon from "../assets/company/shopify.png";
 
 export const navLinks = [
   {
@@ -43,90 +28,35 @@ export const navLinks = [
     title: "عملائنا",
   },
   {
-    id: "articles", // Added new link
-    title: "مقالات", // New title
+    id: "articles",
+    title: "مقالات",
   },
   {
-    id: "downloads", // Added new link
-    title: "تحميلات", // New title
+    id: "downloads",
+    title: "تحميلات",
   },
   {
-    id: "contact", // Added new link
-    title: "اتصل بنا", // New title
+    id: "contact",
+    title: "اتصل بنا",
   },
 ];
 
 const services = [
   {
     title: "تصميم وتطوير التطبيقات",
-    icon: web,
+    icon: webIcon,
   },
   {
     title: "الاستشارات التقنية",
-    icon: mobile,
+    icon: mobileIcon,
   },
   {
     title: "تطوير البرمجيات المخصصة",
-    icon: backend,
+    icon: backendIcon,
   },
   {
     title: "خدمات دعم فني متكاملة",
-    icon: creator,
-  },
-];
-
-const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
+    icon: creatorIcon,
   },
 ];
 
@@ -134,7 +64,7 @@ const experiences = [
   {
     title: "React.js Developer",
     company_name: "Starbucks",
-    icon: starbucks,
+    icon: starbucksIcon,
     iconBg: "#383E56",
     date: "March 2020 - April 2021",
     points: [
@@ -147,7 +77,7 @@ const experiences = [
   {
     title: "React Native Developer",
     company_name: "Tesla",
-    icon: tesla,
+    icon: teslaIcon,
     iconBg: "#E6DEDD",
     date: "Jan 2021 - Feb 2022",
     points: [
@@ -160,7 +90,7 @@ const experiences = [
   {
     title: "Web Developer",
     company_name: "Shopify",
-    icon: shopify,
+    icon: shopifyIcon,
     iconBg: "#383E56",
     date: "Jan 2022 - Jan 2023",
     points: [
@@ -173,7 +103,7 @@ const experiences = [
   {
     title: "Full stack Developer",
     company_name: "Meta",
-    icon: meta,
+    icon: metaIcon,
     iconBg: "#E6DEDD",
     date: "Jan 2023 - Present",
     points: [
@@ -231,8 +161,6 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/",
   },
   {
     name: "Job IT",
@@ -252,8 +180,6 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/",
   },
   {
     name: "Trip Guide",
@@ -273,9 +199,7 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, experiences, testimonials, projects };

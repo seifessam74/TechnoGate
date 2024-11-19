@@ -1,30 +1,31 @@
 // App.jsx
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import {
   About,
   Contact,
-  Experience,
+  Applications,
   Feedbacks,
   Hero,
   Navbar,
-  Tech,
-  Works,
+  Services,
+  Clients,
   StarsCanvas,
   Footer,
 } from "./components";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/TechnoGate">
       <div className="relative z-0 bg-primary">
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center relative z-10">
           <Navbar />
           <Hero />
         </div>
         <About />
-        <Tech />
-        <Experience />
-        {/* <Works /> */}
+        <Services />
+        <Applications />
+        <Clients />
         {/* <Feedbacks />
         <div className="relative z-0">
           <Contact />
