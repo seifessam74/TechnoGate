@@ -34,8 +34,8 @@ const ClientLogos = () => {
   ];
 
   return (
-    <section className="py-16 bg-white sm:mx-20 mx-4">
-      <div className="container mx-auto px-4 mb-12">
+    <section className="py-16 bg-white">
+      <div className="sm:mx-20 mx-4 mb-12">
         <div className="flex items-center gap-4 justify-end">
           <h2 className="text-3xl font-bold text-blue-primary py-4">
             شركاء النجاح
@@ -44,7 +44,7 @@ const ClientLogos = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="sm:mx-20 mx-4">
         <Swiper
           modules={[Autoplay]}
           spaceBetween={50}
@@ -78,7 +78,6 @@ const ClientLogos = () => {
         >
           {logos.map((logo) => (
             <SwiperSlide key={logo.id}>
-              {/* Add max-w-[200px] to control maximum width */}
               <div className="aspect-[3/2] w-full max-w-[200px] mx-auto flex items-center justify-center p-4 transition-transform duration-300 hover:scale-105">
                 <div className="relative w-full h-full max-h-[120px]">
                   <img

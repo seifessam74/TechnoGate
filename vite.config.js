@@ -19,6 +19,7 @@ export default defineConfig({
         chunkFileNames: "assets/js/[name]-[hash].js",
         entryFileNames: "assets/js/[name]-[hash].js",
       },
+      external: ["particles.js"], // Ensure particles.js is treated as external
     },
   },
 });

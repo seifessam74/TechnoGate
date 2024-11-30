@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion"; // Import framer-motion for animation
 
 const FeaturedApps = () => {
   const apps = [
@@ -28,26 +29,106 @@ const FeaturedApps = () => {
     },
   ];
 
-  return (
-    <div className="relative w-full py-16 bg-gray-50">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0 "
-        style={{
-          backgroundImage: `url(${import.meta.env.BASE_URL}images/pattern.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "bottom",
-        }}
-      />
+  // Animation Variants for the Cards
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        type: "spring",
+        stiffness: 80,
+        damping: 20,
+      },
+    }),
+  };
 
-      <div className="relative z-10 container mx-auto px-12">
+  // Hover Effect Variants
+  const hoverEffect = {
+    scale: 1.05,
+    boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.15)", // Reduced box shadow for less performance impact
+    transition: { duration: 0.2 },
+  };
+
+  return (
+    /* #1a1a2e */
+    <div className="relative w-full py-32 bg-[linear-gradient(to_left,_#1D3D6D,_#0F4C75)]">
+      <div className="absolute inset-0 z-0">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1000 1000"
+          className="w-full h-full opacity-10"
+        >
+          <g>
+            <circle
+              cx="100"
+              cy="100"
+              r="300"
+              fill="none"
+              stroke="#4a90e2"
+              strokeWidth="2"
+            />
+            <circle
+              cx="900"
+              cy="900"
+              r="200"
+              fill="none"
+              stroke="#4a90e2"
+              strokeWidth="2"
+            />
+            <line
+              x1="0"
+              y1="0"
+              x2="1000"
+              y2="1000"
+              stroke="#6b7280"
+              strokeWidth="1"
+            />
+            <line
+              x1="200"
+              y1="0"
+              x2="1000"
+              y2="800"
+              stroke="#6b7280"
+              strokeWidth="1"
+            />
+            <line
+              x1="400"
+              y1="0"
+              x2="1000"
+              y2="600"
+              stroke="#6b7280"
+              strokeWidth="1"
+            />
+            <path
+              d="M500,200 L700,400 L500,600 L300,400 Z"
+              fill="none"
+              stroke="#4a90e2"
+              strokeWidth="2"
+            />
+            <path
+              d="M800,100 L900,200 L800,300 L700,200 Z"
+              fill="none"
+              stroke="#4a90e2"
+              strokeWidth="2"
+            />
+            <circle cx="200" cy="200" r="3" fill="#6b7280" />
+            <circle cx="400" cy="400" r="3" fill="#6b7280" />
+            <circle cx="600" cy="600" r="3" fill="#6b7280" />
+            <circle cx="800" cy="800" r="3" fill="#6b7280" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-16">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-10 text-blue-900">
+          <h2 className="text-3xl font-bold mb-10 text-gray-200">
             تطبيقاتنا المميزة
           </h2>
           <p
-            className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+            className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
             style={{ direction: "rtl" }}
           >
             الرجاء الإطلاع على نبذة صغيرة لكى تجد ما تبحث عنه.
@@ -59,15 +140,22 @@ const FeaturedApps = () => {
         {/* Cards Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {apps.map((app, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white shadow-lg p-6 text-center transform transition-all duration-300 hover:bg-blue-600 hover:text-white group"
+              className="bg-white shadow-lg p-6 text-center transform transition-all duration-300 hover:bg-blue-primary hover:text-white group"
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={hoverEffect}
+              variants={cardVariants}
+              style={{ willChange: "transform, opacity" }} // Hints the browser to optimize rendering
             >
               {/* Icon */}
               <div className="mb-4">
                 {app.icon === "chart-bar" && (
                   <svg
-                    className="w-12 h-12 mx-auto text-red-500  transition-colors duration-300"
+                    className="w-12 h-12 mx-auto text-red-500 transition-colors duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -82,7 +170,7 @@ const FeaturedApps = () => {
                 )}
                 {app.icon === "pie-chart" && (
                   <svg
-                    className="w-12 h-12 mx-auto text-red-500  transition-colors duration-300"
+                    className="w-12 h-12 mx-auto text-red-500 transition-colors duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -103,7 +191,7 @@ const FeaturedApps = () => {
                 )}
                 {app.icon === "plane" && (
                   <svg
-                    className="w-12 h-12 mx-auto text-red-500  transition-colors duration-300"
+                    className="w-12 h-12 mx-auto text-red-500 transition-colors duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -118,7 +206,7 @@ const FeaturedApps = () => {
                 )}
                 {app.icon === "users" && (
                   <svg
-                    className="w-12 h-12 mx-auto text-red-500  transition-colors duration-300"
+                    className="w-12 h-12 mx-auto text-red-500 transition-colors duration-300"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -142,7 +230,7 @@ const FeaturedApps = () => {
               <p className="text-gray-600 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
                 {app.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -29,10 +29,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div
-      className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-24"
-      dir="rtl"
-    >
+    <div className=" py-12 sm:py-24" dir="rtl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row-reverse items-center gap-4 sm:gap-8 lg:gap-12 mb-16 sm:mb-20 lg:mb-20 relative">
@@ -191,7 +188,7 @@ const AboutUs = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center bg-blue-primary rounded-2xl p-12 text-white"
+          className="text-center bg-[linear-gradient(to_left,_#1D3D6D,_#0F4C75)] rounded-2xl p-12 text-white"
         >
           <h3 className="text-3xl font-bold mb-6">
             هل أنت جاهز للبدء في مشروعك؟
