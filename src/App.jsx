@@ -44,7 +44,7 @@ particlesJS(
         },
       },
       opacity: {
-        value: 0.7,
+        value: 0.5,
         random: false,
         anim: {
           enable: false,
@@ -67,7 +67,7 @@ particlesJS(
         enable: true,
         distance: 150,
         color: "#D2D2D2",
-        opacity: 0.6,
+        opacity: 0.4,
         width: 1,
       },
       move: {
@@ -138,7 +138,7 @@ const App = () => {
   return (
     <BrowserRouter basename="/TechnoGate">
       <div className="relative z-10 ">
-        <div className=" bg-cover bg-no-repeat bg-center relative z-10">
+        <div className="  bg-cover bg-no-repeat bg-center relative z-10">
           <Navbar />
           <Hero />
         </div>
